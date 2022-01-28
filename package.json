@@ -1,0 +1,36 @@
+{
+  "name": "esmapdb",
+  "homepage": "https://github.com/reelyactive/esmapdb/",
+  "author": {
+    "name": "reelyActive",
+    "email": "info@reelyactive.com"
+  },
+  "description": "Embedded database for Node.js with an ECMAScript Map interface.  We believe in an open Internet of Things.",
+  "keywords": [
+    "reelyActive",
+    "database",
+    "ECMAScript Map"
+  ],
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "main": "./lib/esmapdb.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reelyactive/esmapdb.git"
+  },
+  "dependencies": {
+    "level": "^7.0.1"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/reelyactive/esmapdb/issues"
+  },
+  "contributors": [
+    {
+      "name": "Jeffrey Dungen"
+    }
+  ],
+  "license": "MIT"
+}

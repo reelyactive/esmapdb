@@ -7,7 +7,7 @@ ESMapDB is an embedded database for Node.js with an ECMAScript Map interface.  F
 Motivation
 ----------
 
-_Yet another database???_  At [reelyActive](https://www.reelyactive.com), we used [NeDB](https://github.com/louischatriot/nedb) successfully for many years, which alas is no longer maintained.  After an extensive search for a simple, well-maintained successor with minimal dependencies, [LevelDB](https://github.com/google/leveldb) (wrapped up in the Node.js-friendly [level package](https://github.com/Level/level)) was identified as the best candidate.
+_Yet another database???_  At [reelyActive](https://www.reelyactive.com), we used [NeDB](https://github.com/louischatriot/nedb), "The JavaScript Database", successfully for many years.  But alas, NeDB is no longer maintained.  After an extensive search for a simple, well-maintained successor with minimal dependencies, [LevelDB](https://github.com/google/leveldb) (wrapped up in the Node.js-friendly [level package](https://github.com/Level/level)) was identified as the best candidate.
 
 _So why not just LevelDB???_  Well, LevelDB is very nearly functionally equivalent with the [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map) object introduced in ES6, so we decided to wrap LevelDB with a Map interface, which arguably results in more familiar, readable and developer-friendly code.  In short, we've attempted to make managing a reasonable number of key-value pairs—with persistence—as simple as using Map.get(), Map.set() and the usual iterators.
 

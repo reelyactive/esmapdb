@@ -46,6 +46,78 @@ console.log(database.get('key')); // Prints 'value'
 ```
 
 
+API Reference
+-------------
+
+Note that in all methods with an optional callback below, the callback function observes the form callback(err, result) where the two parameters are defined as follows:
+- err: Error returned by the persistent database operation, `undefined` otherwise.
+- result: The identical type of return value specified by the called function itself, observed from the persistent store, when persistent operation is enabled, or from the in-memory store otherwise.
+
+In other words, when both in-memory _and_ persistent operation are enabled, the function call returns the result from the in-memory store while the asynchronous callback result is derived from the persistent store.
+
+### ESMapDB(options)
+
+Constructor.  Create a new ESMapDB instance with the given options:
+
+| Option                  | Default    | Description                           |
+|:------------------------|:-----------|:--------------------------------------|
+| createInMemory          | false      | Maintain an in-memory copy of the database |
+| createPersistent        | false      | Maintain a copy of the database on the filesystem |
+| persistentLocation      | 'database' | Store data in a folder called 'database' |
+| persistentKeyEncoding   | 'utf-8'    | See LevelDB for supported encodings   |
+| persistentValueEncoding | 'utf-8'    | See LevelDB for supported encodings   |
+
+### .size
+
+Returns the number of key/value pairs in the database.  If in-memory option is enabled, the number of key/value pairs in the Map() is returned.  Else, an _estimate_ of the number of key/value pairs in persistent storage is returned.
+
+### .clear([callback])
+
+Removes all key/value pairs from the database.  Returns `undefined`.
+
+If an _optional_ callback is provided, and persistent operation is enabled, the callback will execute after the persistent store is cleared.  In the absence of a persistent store, the callback will execute immediately.
+
+### .delete(key[, callback])
+
+Removes the pair with the given key from the database.  Returns `true` if the pair in the database existed and has been removed, or `false` if the element does not exist.
+
+If an _optional_ callback is provided, and persistent operation is enabled, the callback will execute after deletion from the persistent store completes.  In the absence of a persistent store, the callback will execute immediately.
+
+### .get(key[, callback])
+
+Retrieve the value associated with the given key.  Returns the value associated to the key, or `undefined` if there is none.
+
+If an _optional_ callback is provided, and persistent operation is enabled, the callback will execute after retrieval from the persistent store completes.  In the absence of a persistent store, the callback will execute immediately.
+
+### .has(key[, callback])
+
+Determine whether a pair with the given key exists in the database.  Returns a boolean asserting whether a value has been associated to the key in the database or not.
+
+If an _optional_ callback is provided, and persistent operation is enabled, the callback will execute after determination from the persistent store completes.  In the absence of a persistent store, the callback will execute immediately.
+
+### .set(key, value[, callback])
+
+Create or update a key/value pair in the database.  Sets the value for the key in the database and returns the updated database as a Map object.  If in-memory operation is disabled, the return value will be an empty Map object.
+
+If an _optional_ callback is provided, and persistent operation is enabled, the callback will execute after the update of the persistent store completes.  In the absence of a persistent store, the callback will execute immediately.
+
+### .keys()
+
+Returns a new Iterator object that contains the keys for each element in the in-memory database.  If in-memory operation is disabled, there will be zero keys over which to iterate.
+
+### .values()
+
+Returns a new Iterator object that contains the values for each element in the in-memory database.  If in-memory operation is disabled, there will be zero values over which to iterate.
+
+### .entries()
+
+Returns a new Iterator object that contains an array of [key, value] for each element in the in-memory database.  If in-memory operation is disabled, there will be zero pairs over which to iterate.
+
+### .forEach(callback)
+
+Executes the callback once for each key-value pair present in the in-memory database.  If in-memory operation is disabled, there will be zero execution of the callback function.
+
+
 Contributing
 ------------
 

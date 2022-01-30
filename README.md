@@ -49,9 +49,9 @@ console.log(database.get('key')); // Prints 'value'
 API Reference
 -------------
 
-Note that in all methods with an optional callback below, the callback function observes the form callback(err, result) where the two parameters are defined as follows:
-- err: Error returned by the persistent database operation, `undefined` otherwise.
-- result: The identical type of return value specified by the called function itself, observed from the persistent store, when persistent operation is enabled, or from the in-memory store otherwise.
+Note that in all methods with an _optional_ callback below, the callback function observes the form __callback(err, result)__ where the two parameters are defined as follows:
+- __err:__ Error returned by the persistent database operation, `undefined` otherwise.
+- __result:__ The same result that the function call itself returns, but taken from the persistent store, when persistent operation is enabled.  If persistent operation is disabled, the result is taken from the in-memory store.
 
 In other words, when both in-memory _and_ persistent operation are enabled, the function call returns the result from the in-memory store while the asynchronous callback result is derived from the persistent store.
 

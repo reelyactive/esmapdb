@@ -55,7 +55,7 @@ Note that in all methods with an _optional_ callback below, the callback functio
 
 In other words, when both in-memory _and_ persistent operation are enabled, the function call returns the result from the in-memory store while the asynchronous callback result is derived from the persistent store.
 
-### ESMapDB(options)
+### ESMapDB(options[, callback])
 
 Constructor.  Create a new ESMapDB instance with the given options:
 
@@ -66,6 +66,10 @@ Constructor.  Create a new ESMapDB instance with the given options:
 | persistentLocation      | 'database' | Store data in a folder called 'database' |
 | persistentKeyEncoding   | 'utf-8'    | See LevelDB for supported encodings   |
 | persistentValueEncoding | 'utf-8'    | See LevelDB for supported encodings   |
+
+If an _optional_ callback is provided, and the `createPersistent` option is selected, the callback will execute after the persistent store is loaded or an error is encountered.
+
+As of __esmapdb__ v0.3.0, errors encountered when loading a persistent store are no longer thrown, but may be observed in the _optional_ callback, and operation will continue as per the `createInMemory` setting.
 
 ### .size
 
